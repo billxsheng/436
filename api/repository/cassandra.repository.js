@@ -18,6 +18,13 @@ module.exports.getByLocation = async (location) => {
     return response;
 }
 
+module.exports.getAll = async () => {
+    query = `SELECT * FROM tourdss.locations`;
+    return client.execute(query).then((res) => {
+        return res.rows;
+    }).catch((e) => Promise.reject(`Unable to fetch all entries.`));
+}
+
 const executeQuery = (location, sentiment) => {
     query =  `SELECT * from tourdss.locations WHERE ls_name = \'${location} ${sentiment}\';`;
     return client.execute(query).then((res) => {

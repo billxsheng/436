@@ -21,3 +21,11 @@ module.exports.getByLocation = async (location, sentiment) => {
         return Promise.reject(e);
     });
 }
+
+module.exports.getAll = async () => {
+    return repository.getAll().then((data) => {
+        return data;
+    }).catch((e) => {
+        return Promise.reject(e);
+    });
+}

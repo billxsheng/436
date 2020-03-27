@@ -16,6 +16,17 @@ app.get('/:location', (req, res, next) => {
     });
 });
 
+/** GET all sentiment counts for a specific location */
+app.get('/', (req, res, next) => {
+    controllers.getAll(req.params.location, req.query.sentiment).then((data) => {
+        res.status(200).send(data);
+    }).catch((e) => {
+        res.status(400).send({
+            message: e
+        })
+    });
+});
+
 module.exports = app;
 
 
