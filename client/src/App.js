@@ -19,12 +19,13 @@ class App extends React.Component {
       let negativeListingsMap = {}
       let neutralListingsMap = {}
       results.forEach((result) => {
-        if (result.ls_name.split(' ')[1] === "Positive") {
-          positiveListingsMap[result.ls_name.split(' ')[0]] = result.ls_count;
-        } else if (result.ls_name.split(' ')[1] === "Negative") {
-          negativeListingsMap[result.ls_name.split(' ')[0]] = result.ls_count;
+        let wordArr = result.ls_name.split(' ');
+        if (wordArr[wordArr.length - 1] === "Positive") {
+          positiveListingsMap[wordArr.slice(0, -1).join(' ')] = result.ls_count;
+        } else if (wordArr[wordArr.length - 1] === "Negative") {
+          negativeListingsMap[wordArr.slice(0, -1).join(' ')] = result.ls_count;
         } else {
-          neutralListingsMap[result.ls_name.split(' ')[0]] = result.ls_count;
+          neutralListingsMap[wordArr.slice(0, -1).join(' ')] = result.ls_count;
         }
       })
 
