@@ -15,9 +15,9 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch('http://localhost:8080/api/locations/').then((res => res.json())).then((results) => {
-      let positiveListingsMap = {}
-      let negativeListingsMap = {}
-      let neutralListingsMap = {}
+      let positiveListingsMap = {};
+      let negativeListingsMap = {};
+      let neutralListingsMap = {};
       results.forEach((result) => {
         let wordArr = result.ls_name.split(' ');
         if (wordArr[wordArr.length - 1] === "Positive") {
@@ -79,8 +79,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Tour Decision Support System</h1>
-          <div style={{ float: 'left', width: '500px', marginLeft: '100px' }}>
+          <h1>Artist Tour Sentiment Analysis</h1>
+          <p>Built by Bill Sheng, Rosa Kang, and James Lee</p>
+          <div style={{ float: 'left', width: '500px', marginLeft: '200px', marginBottom:'100px' }}>
             <p>Most Positive Locations</p>
             <FormControlLabel
               control={
@@ -97,7 +98,7 @@ class App extends React.Component {
               <TableHead>
                 <TableRow>
                   <TableCell align="center">Rank</TableCell>
-                  <TableCell align="center">Location</TableCell>
+                  <TableCell style={{width: '100px'}} align="center">Location</TableCell>
                   <TableCell align="center">Count</TableCell>
                 </TableRow>
               </TableHead>
@@ -126,7 +127,7 @@ class App extends React.Component {
             </Table>
           </div>
 
-          <div style={{ float: 'right', width: '500px', marginRight: '100px' }}>
+          <div style={{ float: 'right', width: '500px', marginRight: '200px', marginBottom:'100px' }}>
             <p>Most Negative Locations</p>
             <FormControlLabel
               control={
@@ -143,7 +144,7 @@ class App extends React.Component {
               <TableHead>
                 <TableRow>
                   <TableCell align="center">Rank</TableCell>
-                  <TableCell align="center">Location</TableCell>
+                  <TableCell style={{width: '100px'}} align="center">Location</TableCell>
                   <TableCell align="center">Count</TableCell>
                 </TableRow>
               </TableHead>
